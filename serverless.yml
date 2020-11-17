@@ -1,0 +1,30 @@
+service: backend
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+plugins:
+  - serverless-webpack
+  - serverless-offline 
+
+functions:
+  verify:
+    handler: handler.hello
+    events:
+      - http:
+          path: /
+          method: GET
+          cors: true
+  auth:
+    handler: auth.handler
+    events: # All events associated with this function
+      - http:
+          path: /auth
+          method: GET
+          cors: true
+      - http:
+          path: /auth/{any}
+          method: GET
+          cors: true
