@@ -2,7 +2,7 @@
 const jwt = require('jsonwebtoken');
 const serverless = require('serverless-http');
 const shopifyAuth = require ('@shopify/koa-shopify-auth').default;
-
+require('cross-fetch/polyfill');
 const Koa = require('koa');
 const app = new Koa();
 
